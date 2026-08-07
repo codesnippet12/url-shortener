@@ -1400,29 +1400,6 @@ CURRENT SYSTEM
       CDN + Scaling
 ```
 
----
-
-# 📸 Screenshots
-
-Add screenshots to the repository using:
-
-```text
-screenshots/
-│
-├── landing-page.png
-├── login.png
-├── register.png
-├── dashboard.png
-├── create-url.png
-├── analytics.png
-└── mobile-view.png
-```
-
-Then add them to this section:
-
-```markdown
-## Screenshots
-
 ### Landing Page
 
 ![Landing Page](screenshots/landing-page.png)
