@@ -1400,19 +1400,6 @@ CURRENT SYSTEM
       CDN + Scaling
 ```
 
-### Landing Page
-
-![Landing Page](screenshots/landing-page.png)
-
-### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-### Analytics
-
-![Analytics](screenshots/analytics.png)
-```
-
 ---
 
 # 🔗 Example
