@@ -1,109 +1,161 @@
-🔗 URL Shortener — Full Stack
-<p align="center">
+# 🔗 URL Shortener
 
-A production-oriented full-stack URL shortening platform built with Java, Spring Boot, React, PostgreSQL, Docker and cloud deployment.
+A full-stack URL shortening platform built with **Java, Spring Boot, React, PostgreSQL, Docker, and JWT authentication**.
 
-Create short URLs, securely manage links, track clicks, visualize analytics and redirect users to their original destinations.
+The application allows users to create short URLs, securely manage their links, track clicks, and visualize URL analytics through a modern dashboard.
 
-</p>
-🚀 Overview
+---
 
-This project is a full-stack URL Shortener application that converts long URLs into compact, shareable links.
+## 📌 Overview
 
-Example
+The URL Shortener converts long URLs into short, shareable links.
 
-Original URL
+### Example
 
+**Original URL**
+
+```text
 https://www.example.com/products/category/item?id=12345
+```
 
-Short URL
+**Short URL**
 
+```text
 https://your-domain.com/s/6rKgdSfF
+```
 
-When a user accesses the shortened URL, the backend resolves the short code, retrieves the original URL from PostgreSQL and performs an HTTP redirect.
+When a user accesses the shortened URL, the application resolves the short code, retrieves the original URL from PostgreSQL, and redirects the user to the destination.
 
-The application also provides authentication, a personalized dashboard and click analytics.
+The application also includes:
 
-✨ Features
-🔗 URL Shortening
-Convert long URLs into short unique URLs.
-Generate unique short identifiers.
-Store URL mappings in PostgreSQL.
-Redirect users to the original URL.
-🔐 Authentication
-User registration
-User login
-JWT-based authentication
-Protected dashboard
-Authorization using Bearer tokens
-Private frontend routes
-📊 Analytics
-Track URL clicks
-Display click counts
-View URL creation dates
-Visualize analytics using graphs
-📋 URL Management
-View all shortened URLs
-Copy shortened URLs
-Open shortened URLs in a new tab
-View individual URL analytics
-🎨 Modern UI
-Responsive React interface
-Tailwind CSS styling
-Framer Motion animations
-Toast notifications
-Responsive dashboard
-Clean card-based URL management interface
-🐳 Containerization
-Dockerized Spring Boot backend
-Multi-stage Docker build
-Separate build and runtime environments
-☁️ Cloud Deployment
+- User registration and login
+- JWT-based authentication
+- Protected dashboard
+- URL management
+- Click tracking
+- Analytics visualization
+- Responsive UI
+- Dockerized backend
+- Cloud deployment
 
-The application is deployed using a decoupled architecture:
+---
 
+# ✨ Features
+
+## 🔗 URL Shortening
+
+- Convert long URLs into short URLs
+- Generate unique short codes
+- Store URL mappings in PostgreSQL
+- Redirect users to the original destination
+
+## 🔐 Authentication
+
+- User registration
+- User login
+- JWT authentication
+- Bearer token authorization
+- Protected dashboard
+- Private frontend routes
+
+## 📊 Analytics
+
+- Track URL clicks
+- Display click counts
+- Display URL creation dates
+- Visualize analytics using graphs
+
+## 📋 URL Management
+
+- View created short URLs
+- Copy short URLs
+- Open short URLs in a new tab
+- View analytics for individual URLs
+
+## 🎨 Modern UI
+
+- React-based interface
+- Responsive design
+- Tailwind CSS styling
+- Animated UI components
+- Toast notifications
+- Dashboard-based URL management
+
+## 🐳 Docker
+
+- Dockerized Spring Boot backend
+- Multi-stage Docker build
+- Separate build and runtime environments
+
+## ☁️ Deployment
+
+The application follows a decoupled deployment architecture:
+
+```text
 Frontend  → Netlify
 Backend   → Render
 Database  → Neon PostgreSQL
-🛠 Tech Stack
-Frontend
-Technology	Purpose
-React	Frontend UI
-Vite	Frontend build tool
-React Router	Client-side routing
-Axios	HTTP/API communication
-Tailwind CSS	Styling
-Framer Motion	Animations
-React Icons	Icons
-Day.js	Date formatting
-React Hot Toast	Notifications
-Recharts	Analytics visualization
-Backend
-Technology	Purpose
-Java	Backend programming language
-Spring Boot	Backend framework
-Spring Web	REST APIs
-Spring Security	Authentication and authorization
-JWT	Stateless authentication
-Spring Data JPA	Persistence layer
-Hibernate	ORM
-Lombok	Boilerplate reduction
-Maven	Dependency management
-Database
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+| Technology | Purpose |
+|------------|---------|
+| React | UI development |
+| Vite | Frontend build tool |
+| React Router | Client-side routing |
+| Axios | REST API communication |
+| Tailwind CSS | UI styling |
+| Framer Motion | Animations |
+| React Icons | Icons |
+| Day.js | Date formatting |
+| React Hot Toast | Notifications |
+| Recharts | Analytics visualization |
+
+## Backend
+
+| Technology | Purpose |
+|------------|---------|
+| Java | Backend programming |
+| Spring Boot | Backend framework |
+| Spring Web | REST APIs |
+| Spring Security | Authentication & authorization |
+| JWT | Stateless authentication |
+| Spring Data JPA | Data persistence |
+| Hibernate | ORM |
+| Lombok | Boilerplate reduction |
+| Maven | Build & dependency management |
+
+## Database
+
+```text
 PostgreSQL
     ↓
-Neon Cloud PostgreSQL
-DevOps / Deployment
+Neon PostgreSQL
+```
+
+## DevOps
+
+```text
 Docker
 Git
 GitHub
-Render
 Netlify
+Render
 Neon PostgreSQL
-🏗 System Architecture
+```
 
-The application follows a decoupled client-server architecture.
+---
 
+# 🏗️ System Architecture
+
+The application follows a **decoupled client-server architecture**.
+
+```text
                          ┌───────────────────┐
                          │       USER        │
                          │    Web Browser    │
@@ -136,7 +188,13 @@ The application follows a decoupled client-server architecture.
                          │ Neon PostgreSQL   │
                          │     Database      │
                          └───────────────────┘
-🧠 High-Level System Design
+```
+
+---
+
+# 🧩 High-Level Architecture
+
+```text
                          INTERNET
                              │
                              ▼
@@ -147,7 +205,7 @@ The application follows a decoupled client-server architecture.
                   │      Frontend       │
                   └──────────┬──────────┘
                              │
-                             │ HTTPS
+                             │ HTTPS / REST
                              ▼
                   ┌─────────────────────┐
                   │       RENDER        │
@@ -156,22 +214,19 @@ The application follows a decoupled client-server architecture.
                   │    Dockerized       │
                   └──────────┬──────────┘
                              │
-             ┌───────────────┼────────────────┐
-             │               │                │
-             ▼               ▼                ▼
-       Authentication   URL Management   Analytics
-             │               │                │
-             └───────────────┼────────────────┘
-                             │
+                             │ JDBC
                              ▼
                   ┌─────────────────────┐
                   │   NEON POSTGRESQL   │
                   │      Database       │
                   └─────────────────────┘
-🔄 Application Flow
+```
 
-The application contains several major flows.
+---
 
+# 🔄 Application Flow
+
+```text
                          USER
                            │
             ┌──────────────┼───────────────┐
@@ -191,10 +246,13 @@ The application contains several major flows.
                   │                 │
                   ▼                 ▼
               Analytics          Redirect
-🔗 URL Shortening Flow
+```
 
-When a user creates a shortened URL:
+---
 
+# 🔗 URL Shortening Flow
+
+```text
                     USER
                       │
                       │ Enter long URL
@@ -232,29 +290,18 @@ When a user creates a shortened URL:
                       │
                       ▼
               React Dashboard
-Example
-Original URL
+```
 
-https://github.com/spring-projects/spring-boot
+---
 
-↓
-
-Generated short code
-
-Ab3Xy91
-
-↓
-
-Short URL
-
-https://your-domain.com/s/Ab3Xy91
-🔀 URL Redirection Flow
+# 🔀 URL Redirection Flow
 
 When a user opens a short URL:
 
+```text
 Browser
    │
-   │ /s/Ab3Xy91
+   │ /s/6rKgdSfF
    ▼
 React Frontend
    │
@@ -265,7 +312,7 @@ ShortenUrlPage
    ▼
 Spring Boot Backend
    │
-   │ GET /Ab3Xy91
+   │ GET /6rKgdSfF
    ▼
 RedirectController
    │
@@ -283,17 +330,20 @@ HTTP 302 Redirect
    │
    ▼
 Original Website
+```
 
-The backend uses the Location HTTP response header.
+The backend performs the redirect using the HTTP `Location` header.
 
-Conceptually:
-
+```http
 HTTP/1.1 302 Found
 Location: https://example.com
-📊 Analytics Flow
+```
 
-The application tracks clicks associated with shortened URLs.
+---
 
+# 📊 Analytics Flow
+
+```text
 User clicks short URL
         │
         ▼
@@ -303,7 +353,7 @@ Backend receives request
 Identify short URL
         │
         ▼
-Update / record click information
+Record / update click information
         │
         ▼
 Persist information
@@ -319,17 +369,15 @@ React Graph Component
         │
         ▼
 Analytics Visualization
+```
 
-The dashboard provides users with information such as:
+---
 
-Total Clicks
-Creation Date
-Click History
-Analytics Graph
-🔐 Authentication Architecture
+# 🔐 Authentication Architecture
 
-The application uses JWT-based stateless authentication.
+The application uses **JWT-based stateless authentication**.
 
+```text
                      USER
                        │
                        │ Login
@@ -369,14 +417,15 @@ The application uses JWT-based stateless authentication.
                        │
                        ▼
                   Controller
-🔒 Protected Route Flow
+```
 
-Frontend routes such as:
+---
 
-/dashboard
+# 🔒 Protected Route Flow
 
-are protected using a private route mechanism.
+The dashboard is protected using frontend route protection.
 
+```text
 User
  │
  ▼
@@ -394,10 +443,15 @@ PrivateRoute
          │
          ▼
        Login
-🎨 Frontend Architecture
+```
 
-The frontend follows a component-based React architecture.
+---
 
+# 🎨 Frontend Architecture
+
+The React frontend follows a component-based architecture.
+
+```text
 React Application
 │
 ├── App
@@ -432,10 +486,15 @@ React Application
 │
 └── API Layer
     └── Axios
-⚙️ Backend Architecture
+```
+
+---
+
+# ⚙️ Backend Architecture
 
 The backend follows a layered architecture.
 
+```text
                   HTTP Request
                        │
                        ▼
@@ -460,53 +519,68 @@ The backend follows a layered architecture.
               ┌─────────────────┐
               │    Database     │
               └─────────────────┘
-Controller Layer
+```
+
+### Controller Layer
 
 Responsible for:
 
-HTTP request handling
-Endpoint mapping
-Request parameters
-HTTP responses
-Redirect handling
+- HTTP request handling
+- Endpoint mapping
+- Request parameters
+- HTTP responses
+- Redirect handling
 
 Example:
 
+```text
 RedirectController
-Service Layer
+```
+
+### Service Layer
 
 Responsible for:
 
-Business logic
-URL generation
-URL lookup
-Analytics processing
-Authentication operations
+- Business logic
+- URL generation
+- URL lookup
+- Analytics processing
+- Authentication operations
 
 Example:
 
+```text
 UrlMappingService
-Repository Layer
+```
+
+### Repository Layer
 
 Responsible for:
 
-Database communication
-CRUD operations
-Query execution
-Entity persistence
-Model / Entity Layer
+- Database communication
+- CRUD operations
+- Query execution
+- Entity persistence
+
+### Model / Entity Layer
 
 Responsible for representing persistent application data.
 
 Example:
 
+```text
 UrlMapping
-🗄️ Database Design
+```
+
+---
+
+# 🗄️ Database Design
 
 The production database uses PostgreSQL.
 
-Conceptually, the application has user and URL mapping relationships.
+Conceptually, the data relationship is:
 
+```text
 ┌─────────────────────────┐
 │          User           │
 ├─────────────────────────┤
@@ -528,96 +602,175 @@ Conceptually, the application has user and URL mapping relationships.
 │ createdDate             │
 │ user_id                 │
 └─────────────────────────┘
-🔌 REST API Design
+```
+
+---
+
+# 🔌 REST API
 
 The backend exposes REST APIs for authentication, URL management and analytics.
 
-Authentication APIs
-Register
+## Authentication
+
+### Register
+
+```http
 POST /api/auth/public/register
+```
 
 Creates a new user account.
 
-Login
+### Login
+
+```http
 POST /api/auth/public/login
+```
 
 Authenticates the user and returns a JWT.
 
-🔗 URL APIs
-Create Short URL
+---
+
+## URL Management
+
+### Create Short URL
+
+```http
 POST /api/urls
+```
 
 Creates a new shortened URL.
 
-Get User URLs
+### Get User URLs
+
+```http
 GET /api/urls
+```
 
-Retrieves URLs associated with the authenticated user.
+Retrieves URLs belonging to the authenticated user.
 
-🔀 Redirect API
+---
+
+## Redirect
+
+```http
 GET /{shortUrl}
+```
 
-Resolves the short code and redirects to the original URL.
+Resolves the short code and redirects the user to the original URL.
 
 Example:
 
-GET /Ab3Xy91
+```http
+GET /6rKgdSfF
+```
 
 Response:
 
+```http
 HTTP/1.1 302 Found
 Location: https://example.com
-📊 Analytics API
+```
+
+---
+
+## Analytics
+
+```http
 GET /api/urls/analytics/{shortUrl}
+```
 
 Retrieves analytics information for a shortened URL.
 
-🛡️ Security
+---
 
-The application implements several security mechanisms.
+# 🛡️ Security
 
-JWT Authentication
+The application implements multiple security mechanisms.
+
+## JWT Authentication
 
 Authenticated requests use:
 
+```http
 Authorization: Bearer <JWT_TOKEN>
-Protected Backend APIs
+```
+
+## Backend Authorization
 
 Spring Security validates JWT tokens before allowing access to protected operations.
 
-Protected Frontend Routes
+## Frontend Route Protection
 
-The dashboard is protected using:
+Protected pages use:
 
+```text
 PrivateRoute
-CORS
+```
+
+## CORS
 
 The backend is configured to allow communication between the deployed frontend and backend.
 
+```text
 Frontend
-   │
-   │ HTTPS
-   ▼
+    │
+    │ HTTPS
+    ▼
 Backend API
-Environment Variables
+```
 
-Sensitive production configuration is stored using environment variables.
+---
 
-Examples:
+# 🔑 Environment Variables
 
-DATABASE_URL
-DATABASE_USERNAME
+Sensitive configuration is managed through environment variables.
+
+## Backend
+
+```env
+DATABASE_URL=<postgresql-database-url>
+DATABASE_USERNAME=<database-username>
+DATABASE_PASSWORD=<database-password>
+
+DATABASE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+
+JWT_SECRET=<strong-secret>
+
+FRONTEND_URL=<frontend-url>
+```
+
+## Frontend
+
+```env
+VITE_BACKEND_URL=<backend-url>
+
+VITE_REACT_FRONT_END_URL=<frontend-url>
+
+VITE_REACT_SUBDOMAIN=<subdomain-url>
+```
+
+### ⚠️ Security
+
+Never commit sensitive values such as:
+
+```text
 DATABASE_PASSWORD
-DATABASE_DIALECT
 JWT_SECRET
-FRONTEND_URL
+API_KEYS
+PRIVATE_KEYS
+```
 
-Sensitive credentials should never be committed to GitHub.
+to GitHub.
 
-🐳 Docker Architecture
+Use environment variables instead.
 
-The Spring Boot backend is containerized using a multi-stage Docker build.
+---
 
+# 🐳 Docker Architecture
+
+The backend uses a multi-stage Docker build.
+
+```text
                     Docker Build
                          │
                          ▼
@@ -644,17 +797,24 @@ The Spring Boot backend is containerized using a multi-stage Docker build.
                          ▼
                    Spring Boot
                     Container
-Benefits
-Reproducible environment
-Portable application
-Dependency isolation
-Easier deployment
-Separation between build and runtime
-Reduced runtime image size
-☁️ Deployment Architecture
+```
 
-The production system follows:
+### Benefits
 
+- Reproducible environment
+- Dependency isolation
+- Portable application
+- Easier deployment
+- Separate build and runtime environments
+- Reduced runtime image size
+
+---
+
+# ☁️ Deployment Architecture
+
+Production architecture:
+
+```text
                          USER
                            │
                            │ HTTPS
@@ -666,8 +826,7 @@ The production system follows:
                 │      Frontend       │
                 └──────────┬──────────┘
                            │
-                           │ REST API
-                           │ HTTPS
+                           │ HTTPS / REST
                            ▼
                 ┌─────────────────────┐
                 │       RENDER        │
@@ -682,7 +841,13 @@ The production system follows:
                 │        NEON         │
                 │     PostgreSQL      │
                 └─────────────────────┘
-📁 Project Structure
+```
+
+---
+
+# 📁 Project Structure
+
+```text
 url-project/
 │
 ├── shortener-sb/
@@ -695,15 +860,10 @@ url-project/
 │   │   │   │           └── shortener/
 │   │   │   │               │
 │   │   │   │               ├── controller/
-│   │   │   │               │
 │   │   │   │               ├── service/
-│   │   │   │               │
 │   │   │   │               ├── repository/
-│   │   │   │               │
 │   │   │   │               ├── models/
-│   │   │   │               │
 │   │   │   │               ├── security/
-│   │   │   │               │
 │   │   │   │               └── ShortenerSbApplication.java
 │   │   │   │
 │   │   │   └── resources/
@@ -729,162 +889,135 @@ url-project/
 │   └── mvnw
 │
 └── README.md
-🔑 Environment Configuration
-Backend
+```
 
-Example:
+---
 
-DATABASE_URL=jdbc:postgresql://<neon-host>/<database>?sslmode=require
-DATABASE_USERNAME=<database-user>
-DATABASE_PASSWORD=<database-password>
+# 💻 Local Development
 
-DATABASE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+## 1. Clone the Repository
 
-JWT_SECRET=<strong-secret>
-
-FRONTEND_URL=<frontend-url>
-Frontend
-
-Example:
-
-VITE_BACKEND_URL=<backend-url>
-
-VITE_REACT_FRONT_END_URL=<frontend-url>
-
-VITE_REACT_SUBDOMAIN=<subdomain-url>
-⚠️ Security
-
-Never commit:
-
-DATABASE_PASSWORD
-JWT_SECRET
-API_KEYS
-PRIVATE_KEYS
-
-to GitHub.
-
-Use environment variables instead.
-
-💻 Local Development
-1. Clone the Repository
+```bash
 git clone <repository-url>
+```
 
-Navigate into the project:
-
+```bash
 cd url-project
-⚙️ Backend Setup
+```
+
+---
+
+# ⚙️ Backend Setup
 
 Navigate to the backend:
 
+```bash
 cd shortener-sb
+```
 
-Configure your environment variables.
+Configure the required environment variables.
 
-Then run:
+### Windows PowerShell
 
-Windows PowerShell
+```powershell
 .\mvnw spring-boot:run
-Linux / macOS
+```
+
+### Linux / macOS
+
+```bash
 ./mvnw spring-boot:run
+```
 
-The backend will start on the configured server port.
+---
 
-🎨 Frontend Setup
+# 🎨 Frontend Setup
 
 Navigate to the frontend:
 
+```bash
 cd url-shortener-frontend
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
-Run the development server:
+Start the development server:
 
+```bash
 npm run dev
-🐳 Docker Setup
+```
 
-Navigate to the backend directory:
+---
 
+# 🐳 Docker Setup
+
+Navigate to the backend:
+
+```bash
 cd shortener-sb
+```
 
 Build the Docker image:
 
+```bash
 docker build -t url-shortener-backend .
+```
 
 Run the container:
 
+```bash
 docker run -p 8080:8080 url-shortener-backend
-🏭 Production Build
-Frontend
+```
 
-Create a production build:
+---
 
+# 🏭 Production Build
+
+## Frontend
+
+```bash
 npm run build
+```
 
 Vite generates:
 
+```text
 dist/
+```
 
-The dist directory contains the optimized frontend assets.
+The `dist` directory contains the optimized production frontend.
 
-Backend
+## Backend
 
-Build the Spring Boot application:
-
+```bash
 ./mvnw clean package -DskipTests
+```
 
-The resulting JAR will be generated inside:
+The generated JAR will be available under:
 
+```text
 target/
-🚀 Deployment
+```
 
-The application is designed for independent deployment.
+---
 
-                   GitHub Repository
-                          │
-             ┌────────────┴────────────┐
-             │                         │
-             ▼                         ▼
-          Netlify                   Render
-             │                         │
-             ▼                         ▼
-         Frontend                  Backend
-                                       │
-                                       ▼
-                                  Neon Database
-Frontend Deployment
+# 📈 Scalability
 
-Build:
+The current architecture is suitable for a small-to-medium scale application.
 
-npm run build
+For higher traffic, the following improvements can be introduced.
 
-Deploy the generated:
+---
 
-dist/
+## 1. Redis Caching
 
-directory to the frontend hosting platform.
+Short URLs are frequently accessed, making them ideal candidates for caching.
 
-Backend Deployment
-
-Build the Docker image:
-
-docker build -t url-shortener-backend .
-
-Deploy the containerized Spring Boot backend.
-
-📈 Scalability Design
-
-The current architecture works well for a small-to-medium scale URL shortening platform.
-
-For larger traffic volumes, the system can be extended.
-
-1. Redis Caching
-
-Short URLs are frequently accessed.
-
-Instead of querying PostgreSQL every time:
-
+```text
 Request
    │
    ▼
@@ -899,25 +1032,31 @@ Redis
           │
           ▼
       PostgreSQL
+```
 
-This can significantly reduce database reads.
+This reduces repeated database reads.
 
-2. Database Indexing
+---
 
-Frequently queried columns should have indexes.
+## 2. Database Indexing
+
+Frequently queried fields can be indexed.
 
 Potential candidates:
 
+```text
 shortUrl
 userId
 createdDate
+```
 
-This improves lookup performance as the database grows.
+---
 
-3. Load Balancing
+## 3. Load Balancing
 
-Multiple backend instances can be deployed behind a load balancer.
+Multiple backend instances can run behind a load balancer.
 
+```text
                          Load Balancer
                               │
               ┌───────────────┼───────────────┐
@@ -929,10 +1068,15 @@ Multiple backend instances can be deployed behind a load balancer.
                               │
                               ▼
                          PostgreSQL
-4. Asynchronous Analytics
+```
+
+---
+
+## 4. Asynchronous Analytics
 
 Analytics processing can be moved to a message queue.
 
+```text
 User Click
     │
     ▼
@@ -946,50 +1090,30 @@ Analytics Worker
     │
     ▼
 Database
+```
 
-This keeps the redirect path fast.
+This keeps the redirect path lightweight.
 
-5. CDN
+---
+
+## 5. CDN
 
 Static frontend assets can be served through a CDN to improve:
 
-Global latency
-Asset delivery
-Caching
-Scalability
-📊 Performance Considerations
+- Global latency
+- Asset delivery
+- Caching
+- Scalability
 
-The critical redirect path should remain lightweight.
+---
 
-Short Code
-    │
-    ▼
-Lookup
-    │
-    ▼
-Original URL
-    │
-    ▼
-302 Redirect
+# 🧪 Testing Strategy
 
-For higher traffic:
+A production-grade testing strategy can follow the testing pyramid:
 
-Redis Cache
-     +
-Database Index
-     +
-Load Balancer
-     +
-Async Analytics
-
-can be introduced.
-
-🧪 Testing Strategy
-
-A mature version of the application can follow a testing pyramid.
-
+```text
                      ┌──────────────┐
-                     │ E2E Tests    │
+                     │  E2E Tests   │
                      └──────┬───────┘
                             │
                     ┌───────┴────────┐
@@ -998,20 +1122,24 @@ A mature version of the application can follow a testing pyramid.
                     └───────┬────────┘
                             │
                   ┌─────────┴─────────┐
-                  │   Unit Tests      │
+                  │    Unit Tests     │
                   │                   │
                   │ Service / Utility │
                   └───────────────────┘
+```
 
-Recommended technologies:
+Recommended testing tools:
 
+```text
 JUnit
 Mockito
 Spring Boot Test
 MockMvc
+```
 
-Potential test coverage:
+Potential test areas:
 
+```text
 Authentication
 URL Creation
 URL Lookup
@@ -1019,10 +1147,15 @@ Redirect Logic
 Analytics
 Authorization
 Repository Operations
-🔄 CI/CD Architecture
+```
 
-A production-grade CI/CD pipeline could follow:
+---
 
+# 🔄 CI/CD Architecture
+
+A future CI/CD pipeline could look like:
+
+```text
 Developer
     │
     │ git push
@@ -1043,40 +1176,49 @@ GitHub Actions
           ├───────────────┐
           ▼               ▼
        Frontend        Backend
-🧠 Engineering Decisions
-Why Spring Boot?
+```
+
+---
+
+# 🧠 Engineering Decisions
+
+## Why Spring Boot?
 
 Spring Boot provides:
 
-Production-ready backend framework
-REST API support
-Spring Security
-Spring Data JPA
-Hibernate integration
-Enterprise-level ecosystem
-Easy cloud deployment
-Why React?
+- Production-ready backend framework
+- REST API support
+- Spring Security
+- Spring Data JPA
+- Hibernate integration
+- Enterprise ecosystem
+- Cloud deployment support
+
+## Why React?
 
 React provides:
 
-Component-based architecture
-Reusable components
-Declarative UI
-Strong ecosystem
-Efficient state-driven rendering
-Why PostgreSQL?
+- Component-based architecture
+- Reusable components
+- Declarative UI
+- Strong ecosystem
+- Efficient state-driven rendering
+
+## Why PostgreSQL?
 
 PostgreSQL provides:
 
-ACID transactions
-Strong relational data modeling
-Reliable persistence
-Powerful SQL capabilities
-Excellent JPA/Hibernate support
-Why Docker?
+- ACID transactions
+- Relational data modeling
+- Reliable persistence
+- Powerful SQL capabilities
+- Strong JPA/Hibernate integration
 
-Docker packages the application and runtime environment together.
+## Why Docker?
 
+Docker packages the application and its runtime environment together.
+
+```text
 Application
      +
 Dependencies
@@ -1084,14 +1226,19 @@ Dependencies
 Runtime
      ↓
 Portable Container
+```
 
-This helps reduce environment inconsistencies between development and deployment.
+This helps maintain consistency across environments.
 
-🧩 Software Engineering Principles
-Separation of Concerns
+---
+
+# 🧩 Software Engineering Principles
+
+## Separation of Concerns
 
 Each layer has a specific responsibility.
 
+```text
 Controller
     ↓
 Request / Response
@@ -1103,10 +1250,11 @@ Business Logic
 Repository
     ↓
 Database Access
-Layered Architecture
+```
 
-The backend separates:
+## Layered Architecture
 
+```text
 Presentation
      ↓
 Business Logic
@@ -1114,19 +1262,23 @@ Business Logic
 Persistence
      ↓
 Database
-Stateless Authentication
+```
 
-JWT authentication avoids traditional server-side sessions.
+## Stateless Authentication
+
+JWT authentication avoids traditional server-side session storage.
 
 Each authenticated request carries the token:
 
+```http
 Authorization: Bearer <JWT>
-Environment-Based Configuration
+```
 
-Production-specific values are provided using environment variables.
+## Environment-Based Configuration
 
-This allows:
+Production-specific configuration is provided through environment variables.
 
+```text
 Development
      ↓
 Environment Variables
@@ -1134,38 +1286,39 @@ Environment Variables
 Production
      ↓
 Environment Variables
+```
 
-without changing application source code.
+---
 
-🔮 Future Improvements
+# 🚀 Future Improvements
 
-Potential improvements include:
+- [ ] Custom short aliases
+- [ ] QR code generation
+- [ ] URL expiration
+- [ ] URL deletion
+- [ ] URL editing
+- [ ] Advanced analytics
+- [ ] Geographic analytics
+- [ ] Device analytics
+- [ ] Browser analytics
+- [ ] Redis caching
+- [ ] Rate limiting
+- [ ] Swagger / OpenAPI documentation
+- [ ] Email verification
+- [ ] Password reset
+- [ ] OAuth2 / Google Login
+- [ ] Admin dashboard
+- [ ] Custom domains
+- [ ] Click event streaming
+- [ ] Automated CI/CD
+- [ ] Unit test coverage
+- [ ] Integration test coverage
 
- Custom short aliases
- QR code generation
- URL expiration
- URL deletion
- URL editing
- Advanced analytics
- Geographic analytics
- Device analytics
- Browser analytics
- Redis caching
- Rate limiting
- Swagger / OpenAPI documentation
- Email verification
- Password reset
- Google OAuth2 login
- Admin dashboard
- Custom domains
- Click event streaming
- Automated CI/CD
- Unit test coverage
- Integration test coverage
-🏆 What This Project Demonstrates
+---
 
-This project demonstrates practical experience with:
+# 📊 What This Project Demonstrates
 
+```text
 Java
 Spring Boot
 Spring Security
@@ -1179,9 +1332,6 @@ JPA
 Hibernate
 Docker
 Cloud Deployment
-Netlify
-Render
-Neon PostgreSQL
 Authentication
 Authorization
 CORS
@@ -1193,14 +1343,70 @@ Git
 GitHub
 System Design
 Scalability
-📸 Screenshots
+Environment-Based Configuration
+```
 
-Screenshots can be added to the repository under:
+---
 
-screenshots/
+# 🏆 Project Highlights
 
-Recommended screenshots:
+```text
+✓ Full-Stack Application
+✓ RESTful Backend
+✓ JWT Authentication
+✓ Protected Routes
+✓ PostgreSQL Database
+✓ URL Shortening
+✓ URL Redirection
+✓ Click Analytics
+✓ Responsive React UI
+✓ Dockerized Backend
+✓ Cloud Deployment
+✓ Layered Backend Architecture
+✓ Environment-Based Configuration
+✓ Scalable System Design
+```
 
+---
+
+# 🔮 Scalability Roadmap
+
+```text
+CURRENT SYSTEM
+      │
+      ▼
+┌─────────────────────┐
+│ React + Spring Boot │
+│     PostgreSQL      │
+└──────────┬──────────┘
+           │
+           ▼
+     Redis Caching
+           │
+           ▼
+    Database Indexing
+           │
+           ▼
+    Load Balancing
+           │
+           ▼
+  Async Analytics Queue
+           │
+           ▼
+     Multiple Backend
+        Instances
+           │
+           ▼
+      CDN + Scaling
+```
+
+---
+
+# 📸 Screenshots
+
+Add screenshots to the repository using:
+
+```text
 screenshots/
 │
 ├── landing-page.png
@@ -1210,9 +1416,11 @@ screenshots/
 ├── create-url.png
 ├── analytics.png
 └── mobile-view.png
+```
 
-Then include them in the README:
+Then add them to this section:
 
+```markdown
 ## Screenshots
 
 ### Landing Page
@@ -1226,22 +1434,48 @@ Then include them in the README:
 ### Analytics
 
 ![Analytics](screenshots/analytics.png)
-📌 Example
-Input
+```
+
+---
+
+# 🔗 Example
+
+### Original URL
+
+```text
 https://github.com/spring-projects/spring-boot
-Generated Short Code
+```
+
+### Generated Short Code
+
+```text
 Ab3Xy91
-Short URL
+```
+
+### Short URL
+
+```text
 https://your-domain.com/s/Ab3Xy91
-Redirect Request
+```
+
+### Redirect Request
+
+```http
 GET /Ab3Xy91
-Backend Response
+```
+
+### Backend Response
+
+```http
 HTTP/1.1 302 Found
 Location: https://github.com/spring-projects/spring-boot
-🎯 Core Request Lifecycle
+```
 
-A complete URL lifecycle looks like:
+---
 
+# 🎯 Complete Request Lifecycle
+
+```text
                   USER
                     │
                     ▼
@@ -1274,10 +1508,9 @@ A complete URL lifecycle looks like:
                     ▼
              React Dashboard
                     │
-                    │
                     │ User clicks
                     ▼
-              Short URL
+               Short URL
                     │
                     ▼
             Spring Boot API
@@ -1293,7 +1526,13 @@ A complete URL lifecycle looks like:
                     │
                     ▼
               Destination
-🏗️ Architecture at a Glance
+```
+
+---
+
+# 🏗️ Architecture at a Glance
+
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                         CLIENT                              │
 │                                                             │
@@ -1323,13 +1562,19 @@ A complete URL lifecycle looks like:
 │                                                             │
 │                    Neon Cloud DB                            │
 └─────────────────────────────────────────────────────────────┘
-👨‍💻 Author
-Subhranil Das
+```
+
+---
+
+# 👨‍💻 Author
+
+## Subhranil Das
 
 Full Stack Developer
 
-Core interests:
+### Areas of Interest
 
+```text
 Backend Engineering
 Java
 Spring Boot
@@ -1338,24 +1583,30 @@ System Design
 Cloud Computing
 Full Stack Development
 Data Structures & Algorithms
-⭐ Project Highlights
-✓ Full Stack Application
-✓ RESTful Backend
-✓ JWT Authentication
-✓ Protected Routes
-✓ PostgreSQL Database
-✓ URL Shortening
-✓ URL Redirection
-✓ Click Analytics
-✓ Responsive React UI
-✓ Dockerized Backend
-✓ Cloud Deployment
-✓ Layered Backend Architecture
-✓ Scalable System Design
-✓ Environment-Based Configuration
-<p align="center">
-🔗 Built with Java, Spring Boot, React, PostgreSQL & Docker
+```
 
-Designed and developed as a full-stack URL shortening platform.
+---
+
+# ⭐ Final Notes
+
+This project was designed to demonstrate practical full-stack engineering concepts including:
+
+- Backend API development
+- Authentication and authorization
+- Database persistence
+- URL redirection
+- Analytics
+- Frontend routing
+- Cloud deployment
+- Docker containerization
+- Environment-based configuration
+- Layered architecture
+- Scalability considerations
+
+---
+
+<p align="center">
+
+<strong>Built with Java • Spring Boot • React • PostgreSQL • Docker</strong>
 
 </p>
