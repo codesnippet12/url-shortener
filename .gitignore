@@ -1,0 +1,32 @@
+# =========================
+# Backend - Spring Boot
+# =========================
+
+shortener-sb/target/
+shortener-sb/.env
+shortener-sb/.env.prod
+
+# Maven
+shortener-sb/.mvn/
+
+# IntelliJ
+.idea/
+*.iml
+
+# =========================
+# Frontend - React/Vite
+# =========================
+
+url-shortener-frontend/node_modules/
+url-shortener-frontend/dist/
+url-shortener-frontend/.env
+
+# Vite
+url-shortener-frontend/.vite/
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
